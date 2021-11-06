@@ -9,14 +9,14 @@ ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-def get_content(url):
+def get_content(url) -> BeautifulSoup:
     req = Request(url, headers={ 'User-Agent': 'Moazilla/5.0' })
     page = urlopen(req).read()
     
     soup = BeautifulSoup(page, 'html.parser')
     return soup
 
-def get_data(tr):
+def get_data(tr) -> dict:
     data = {}
 
     a = tr.find('a', attrs={ 'class': 'title' })
@@ -29,7 +29,7 @@ def get_data(tr):
 
     return data
 
-def get_url_data(url, num_searches):
+def get_url_data(url, num_searches) -> list[dict]:
     content = get_content(url)
 
     tables = content.findAll('table', attrs={ 'class': 'clamp-list' })
