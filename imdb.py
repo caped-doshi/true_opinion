@@ -62,3 +62,4 @@ json_obj = json.dumps(dictionary, indent=4)
 with open("imdb.json", "w") as outfile:
     outfile.write(json_obj)
 driver.close()
+
