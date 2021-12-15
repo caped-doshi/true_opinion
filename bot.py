@@ -7,7 +7,7 @@ from os import getenv
 load_dotenv()
 
 bot = discord.Bot()
-uri = "mongodb+srv://arvind27kr:" + getenv('pw') + "@movie-data.pxrlp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+uri = getenv('uri')
 
 client = AsyncIOMotorClient(uri)
 db = client.get_database("ratings")

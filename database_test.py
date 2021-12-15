@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from os import getenv
 load_dotenv()
 
-cluster = MongoClient("mongodb+srv://arvind27kr:" + getenv('pw') + "@movie-data.pxrlp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+cluster = MongoClient(getenv('uri'))
 
 db = cluster["ratings"]
 collection = db["imdb"]
