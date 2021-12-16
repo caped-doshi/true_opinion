@@ -19,7 +19,7 @@ dictionary = {} #string for movie pointing to an int for score
 
 counter = 0
 
-while counter < 1:
+while counter < 100:
 
     soup = BeautifulSoup(driver.page_source, "html.parser")
     titles = soup.find_all('div', {'class': 'col-title'})
@@ -50,13 +50,15 @@ while counter < 1:
     
     processed_ratings = []
     processed_titles = []
+    
+    print(counter)
 
     if len(driver.find_elements(By.LINK_TEXT, value='Next »')):
         next_button = driver.find_element(By.LINK_TEXT, value='Next »')
         counter += 1
         next_button.click()
     else:
-        next_button = False
+        next_button_exists = False
 
 json_obj = json.dumps(dictionary, indent=4)
 with open("imdb.json", "w") as outfile:
