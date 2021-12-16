@@ -17,9 +17,10 @@ collection = db.get_collection("imdb")
 
 class MyButton(Button):
     async def callback(self, interaction):
-        c = "Hello " + str(interaction.user) + "\n"
+        c = "Hello " + str(interaction.user)
+        c += ", here are the results for " + "**" + self.label + "**" + "\n"
         imdb_rating = await find_by_id(self.label)
-        c += "IMDB rating: " + imdb_rating['imdb']
+        c += "**IMDB rating: " + imdb_rating['imdb'] + "**"
         await interaction.response.edit_message(content=c, view=None)
 
 
@@ -56,14 +57,14 @@ async def search_result(ctx, query: str):
     view.add_item(button2)
     view.add_item(button3)
 
-    await ctx.respond("Results: " + ", ".join(top_5_arr), view=view)
+    await ctx.respond("Top 3 Results for your search: ",view=view)
 
 
 @bot.slash_command(name='all_movies', guild_ids=[748940193733804252])
 async def all_movies(ctx):
     arr = await find_by_id('all_movies')
-    string = " ".join(arr['arr'])
-    await ctx.respond('All Movies in database: ' + string)
+    length = len(arr['arr'])
+    await ctx.respond(f"There are a total of **{length}** movies in the database")
 
 bot.run(getenv('TOKEN'))
 
