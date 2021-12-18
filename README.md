@@ -1,18 +1,10 @@
-# Discord Bot for The True Opinion
-This is a discord that can get the imdb, rotten tomatoes, and true opinion
-rating of many different movies.
+# Twitter Data Analysis
 
-Technologies Used:
-- Pycord
-- MongoDB
-- AsyncIOMotorClient
+This branch will take data from twitter after a few days from the release date of the movie
+and run NLP sentiment analysis on the tweets to find the 'true opinion' of the movie.
 
-TOKEN is the discord bot token.
-pw is the password to the MongoDB user account associated to the database.
+Trained the model on google colab with the given GPU and saved the weights.
+Recreated the model and loaded the weights on to my local machine.
+https://towardsdatascience.com/sentiment-analysis-in-10-minutes-with-bert-and-hugging-face-294e8a04b671
 
-To be implemented: 
-- Need to add many more movies to the database
-- Allow the user to search for a movie
-    - Return the 5 closest movies and ask them which one exactly they are looking for.
-    - Have a button system for this.
-- The True Opinion sentiment analysis.
+

@@ -27,8 +27,8 @@ class button_rt(Button):
     async def callback(self, interaction):
         c = "Hello " + str(interaction.user)
         c += ", here are the results for " + "**" + self.label + "**" + "\n"
-        imdb_rating = await find_by_id(self.label)
-        c += "**Rotten Tomatoes rating: " + imdb_rating['rt'] + "**"
+        rt_rating = await find_by_id(self.label)
+        c += "**RT rating: " + rt_rating['rt'] + "**"
         await interaction.response.edit_message(content=c, view=None)
 
 
@@ -50,7 +50,7 @@ async def ping(ctx):
 
 @bot.slash_command(name='imdb',guild_ids=[748940193733804252])
 async def imdb_result(ctx, query: str):
-    ctx.defer()
+    await ctx.defer()
     movies_arr = await find_by_id('all_movies')
     algo = SearchAlgorithm(movies_arr['arr'])
     top_5_arr = await algo.top_5(query)
@@ -69,7 +69,8 @@ async def imdb_result(ctx, query: str):
     await ctx.respond("Top 3 Results for your search: ",view=view)
 
 @bot.slash_command(name='rotten_tomatoes',guild_ids=[748940193733804252])
-async def imdb_result(ctx, query: str):
+async def rt_result(ctx, query: str):
+    await ctx.defer()
     movies_arr = await find_by_id('all_movies')
     algo = SearchAlgorithm(movies_arr['arr'])
     top_5_arr = await algo.top_5(query)
