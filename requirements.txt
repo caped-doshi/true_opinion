@@ -57,7 +57,6 @@ nnfs==0.5.1
 numexpr==2.7.3
 numpy==1.19.5
 oauthlib==3.1.0
-object-detection==0.1
 opencv-python==4.5.1.48
 opt-einsum==3.3.0
 outcome==1.1.0
@@ -73,7 +72,6 @@ pyarrow==6.0.1
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pyclipper==1.2.1
-pycocotools @ git+https://github.com/philferriere/cocoapi.git@2929bd2ef6b451054755dfd7ceb09278f935f7ad#subdirectory=PythonAPI
 pycparser==2.20
 Pygments==2.10.0
 pymongo==3.12.3
@@ -103,7 +101,6 @@ slid==0.2.1
 sniffio==1.2.0
 sortedcontainers==2.4.0
 soupsieve==2.2.1
-tables==3.6.1
 tabulate==0.8.9
 tensorboard==2.4.1
 tensorboard-data-server==0.6.1
