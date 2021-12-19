@@ -20,7 +20,14 @@ class button_imdb(Button):
         c = "Hello " + str(interaction.user)
         c += ", here are the results for " + "**" + self.label + "**" + "\n"
         imdb_rating = await find_by_id(self.label)
-        c += "**IMDB rating: " + imdb_rating['imdb'] + "**"
+        try:
+            imdb_rating = imdb_rating['imdb']
+        except:
+            imdb_rating = -1
+        if imdb_rating > 0:
+            c += "**IMDB rating: " + imdb_rating['imdb'] + "**"
+        else:
+            c += 
         await interaction.response.edit_message(content=c, view=None)
 
 class button_rt(Button):
@@ -28,7 +35,14 @@ class button_rt(Button):
         c = "Hello " + str(interaction.user)
         c += ", here are the results for " + "**" + self.label + "**" + "\n"
         rt_rating = await find_by_id(self.label)
-        c += "**Rotten Tomatoes rating: " + rt_rating['rt'] + "**"
+        try: 
+            num = rt_rating['rt']
+        except:
+            num = -1
+        if num > 0:
+            c += "**Rotten Tomatoes rating: " + num + "**"
+        else:
+            c+= "Sorry, this rating does not exist for this data entry"
         await interaction.response.edit_message(content=c, view=None)
 
 class button_true(Button):
@@ -36,10 +50,16 @@ class button_true(Button):
         c = "Hello " + str(interaction.user)
         c += ", here are the results for " + "**" + self.label + "**" + "\n"
         rating = await find_by_id(self.label)
-        rating = float(rating['true_opinion'])
-        rating *= 100
-        rating = str(int(rating))
-        c += "**The True Opinion: " + rating + "**"
+        try: 
+            rating = float(rating['true_opinion'])
+            rating *= 100
+            rating = str(int(rating))
+        except:
+            rating = -1
+        if rating > 0:
+            c += "**The True Opinion: " + rating + "**"
+        else:
+            c+= "Sorry we have not found the true opinion for this title"
         await interaction.response.edit_message(content=c, view=None)
 
 async def find_by_id(id):
