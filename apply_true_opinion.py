@@ -43,7 +43,7 @@ class True_Opinion:
             print(true_opinion)
 
         
-search = "Demon Slayer: Mugen Train"
+search = "Bloodshot"
 
 t = True_Opinion()
 t.set_true_opinion(search)
