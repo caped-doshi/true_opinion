@@ -28,9 +28,19 @@ class button_rt(Button):
         c = "Hello " + str(interaction.user)
         c += ", here are the results for " + "**" + self.label + "**" + "\n"
         rt_rating = await find_by_id(self.label)
-        c += "**RT rating: " + rt_rating['rt'] + "**"
+        c += "**Rotten Tomatoes rating: " + rt_rating['rt'] + "**"
         await interaction.response.edit_message(content=c, view=None)
 
+class button_true(Button):
+    async def callback(self, interaction):
+        c = "Hello " + str(interaction.user)
+        c += ", here are the results for " + "**" + self.label + "**" + "\n"
+        rating = await find_by_id(self.label)
+        rating = float(rating['true_opinion'])
+        rating *= 100
+        rating = str(int(rating))
+        c += "**The True Opinion: " + rating + "**"
+        await interaction.response.edit_message(content=c, view=None)
 
 async def find_by_id(id):
     cursor = await collection.find_one({'_id':id})
@@ -79,6 +89,26 @@ async def rt_result(ctx, query: str):
     button2 = button_rt(label=top_5_arr[1],style=discord.ButtonStyle.primary,
      emoji="✔")
     button3 = button_rt(label=top_5_arr[2],style=discord.ButtonStyle.primary,
+     emoji="✔")
+    
+    view = View()
+    view.add_item(button1)
+    view.add_item(button2)
+    view.add_item(button3)
+
+    await ctx.respond("Top 3 Results for your search: ",view=view)
+
+@bot.slash_command(name='true_opinion',guild_ids=[748940193733804252])
+async def rt_result(ctx, query: str):
+    await ctx.defer()
+    movies_arr = await find_by_id('all_movies')
+    algo = SearchAlgorithm(movies_arr['arr'])
+    top_5_arr = await algo.top_5(query)
+    button1 = button_true(label=top_5_arr[0],style=discord.ButtonStyle.primary,
+     emoji="✔")
+    button2 = button_true(label=top_5_arr[1],style=discord.ButtonStyle.primary,
+     emoji="✔")
+    button3 = button_true(label=top_5_arr[2],style=discord.ButtonStyle.primary,
      emoji="✔")
     
     view = View()
