@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from movie_tweets import Twitter_Query
 import tensorflow as tf
 from tensorflow import keras
@@ -34,6 +35,8 @@ class Reconstructed_Model:
         ratio = round(ratio, 2)
         return float(str(ratio))
 =======
+=======
+>>>>>>> 2ccba5a001118d5a724aa98c162e6ae3dca9aa15
 =======
 >>>>>>> 2ccba5a001118d5a724aa98c162e6ae3dca9aa15
 =======
@@ -123,6 +126,10 @@ id2label = sentiment_model.model.config.id2label
 predicted_class_label = id2label[np.argmax(single_sentence_probas)]
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+print (predicted_class_label)
+>>>>>>> 2ccba5a001118d5a724aa98c162e6ae3dca9aa15
+=======
 print (predicted_class_label)
 >>>>>>> 2ccba5a001118d5a724aa98c162e6ae3dca9aa15
 =======
