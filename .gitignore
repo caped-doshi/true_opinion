@@ -1,2 +1,5 @@
 .env
 node_modules
+test.h5
+__pycache__
+FuzzySearch.cpython-39.pyc

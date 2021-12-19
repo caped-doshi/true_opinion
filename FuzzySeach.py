@@ -11,7 +11,8 @@ class SearchAlgorithm:
     async def top_5(self, search):
         tuples_arr = []
         for string in self.strings:
-            score = fuzz.ratio(string, search)
+            score = fuzz.partial_ratio(string, search)
+            #score = fuzz.ratio(string, search)
             tuples_arr.append((score, string))
         
         tuples_arr.sort()
