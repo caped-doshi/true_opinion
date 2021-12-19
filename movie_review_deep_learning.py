@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from transformers import BertTokenizer, TFBertForSequenceClassification
 from transformers import InputExample, InputFeatures
 import tensorflow as tf
@@ -16,6 +17,8 @@ dataset = tf.keras.utils.get_file(fname="aclImdb_v1.tar.gz",
                                   cache_dir='.',
                                   cache_subdir='')
 =======
+=======
+>>>>>>> 2ccba5a001118d5a724aa98c162e6ae3dca9aa15
 =======
 >>>>>>> 2ccba5a001118d5a724aa98c162e6ae3dca9aa15
 import numpy as np
@@ -138,6 +141,10 @@ pred = [label2id_mapper[i] for i in torch.argmax(proba, dim = -1).numpy()]
 actual = [label2id_mapper[i] for i in eval_results.label_ids]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+trainer.save_model('sentiment_model')
+>>>>>>> 2ccba5a001118d5a724aa98c162e6ae3dca9aa15
+=======
 trainer.save_model('sentiment_model')
 >>>>>>> 2ccba5a001118d5a724aa98c162e6ae3dca9aa15
 =======
